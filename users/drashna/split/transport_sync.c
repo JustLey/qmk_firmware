@@ -48,8 +48,13 @@ void user_config_sync(uint8_t initiator2target_buffer_size, const void* initiato
 #ifdef CUSTOM_OLED_DRIVER
 #    include "oled/oled_stuff.h"
 void keylogger_string_sync(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
+<<<<<<< HEAD
     if (initiator2target_buffer_size == (OLED_KEYLOGGER_LENGTH+1)) {
         memcpy(&oled_keylog_str, initiator2target_buffer, initiator2target_buffer_size);
+=======
+    if (initiator2target_buffer_size == (OLED_KEYLOGGER_LENGTH)) {
+        memcpy(&keylog_str, initiator2target_buffer, initiator2target_buffer_size);
+>>>>>>> bluetooth_playground
     }
 }
 #endif

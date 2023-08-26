@@ -6,9 +6,12 @@
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
+<<<<<<< HEAD
 #ifdef CUSTOM_DYNAMIC_MACROS_ENABLE
 #    include "keyrecords/dynamic_macros.h"
 #endif
+=======
+>>>>>>> bluetooth_playground
 
 uint16_t copy_paste_timer;
 // Defines actions tor my global custom keycodes. Defined in drashna.h file
@@ -165,6 +168,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 toggle_keyboard_lock();
             }
             break;
+<<<<<<< HEAD
+=======
+        }
+        case OLED_LOCK: {
+#if defined(OLED_ENABLE) && defined(CUSTOM_OLED_DRIVER)
+            extern bool is_oled_locked;
+            if (record->event.pressed) {
+                is_oled_locked = !is_oled_locked;
+                if (is_oled_locked) {
+                    oled_on();
+                }
+            }
+#endif
+        } break;
+>>>>>>> bluetooth_playground
 #if defined(OS_DETECTION_ENABLE) && defined(OS_DETECTION_DEBUG_ENABLE)
         case STORE_SETUPS:
             if (record->event.pressed) {

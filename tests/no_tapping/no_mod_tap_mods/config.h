@@ -18,5 +18,13 @@
 
 #include "test_common.h"
 
+<<<<<<<< HEAD:tests/no_tapping/no_mod_tap_mods/config.h
 #define NO_ACTION_TAPPING
 #define NO_ACTION_TAPPING_MODTAP_MODS
+========
+#define QUICK_TAP_TERM 100
+// Although a seemingly superfluous addition since the default per-key function behaves
+// no differently from defining a single global QUICK_TAP_TERM, this has been useful
+// to catch compilation errors and prevent regressions in the future; see PR #19893.
+#define QUICK_TAP_TERM_PER_KEY
+>>>>>>>> bluetooth_playground:tests/tap_hold_configurations/quick_tap/config.h

@@ -36,10 +36,15 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 
     if (x != 0 && y != 0 && (timer_elapsed(mouse_debounce_timer) > TAP_CHECK)) {
         if (enable_acceleration) {
+<<<<<<< HEAD
             float magnitude = sqrtf( mouse_report.x * mouse_report.x + mouse_report.y * mouse_report.y );
             float adjusted_magnitude = powf(magnitude, 1.2f);
             x = (mouse_xy_report_t)(x * adjusted_magnitude);
             y = (mouse_xy_report_t)(y * adjusted_magnitude);
+=======
+            x = (mouse_xy_report_t)(x > 0 ? pow(4, x) / 2 + x : -pow(4, abs(x)) / 2 + x);
+            y = (mouse_xy_report_t)(y > 0 ? pow(5, y) / 2 + y : -pow(5, abs(y)) / 2 + y);
+>>>>>>> bluetooth_playground
 //            x = (mouse_xy_report_t)(x > 0 ? x * x / 16 + x : -x * x / 16 + x);
 //            y = (mouse_xy_report_t)(y > 0 ? y * y / 16 + y : -y * y / 16 + y);
         }

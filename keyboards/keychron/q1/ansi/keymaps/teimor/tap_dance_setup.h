@@ -1,4 +1,4 @@
-/* Copyright 2022 @ Teimor Epstein
+/* Copyright 2022 @ lokher (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,26 +13,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
-#include QMK_KEYBOARD_H
-
 typedef enum {
-    TD_NONE,
-    TD_UNKNOWN,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_DOUBLE_TAP,
-    TD_DOUBLE_HOLD,
-    TD_DOUBLE_SINGLE_TAP,  // Send two single taps
-    TD_TRIPLE_TAP,
-    TD_TRIPLE_HOLD,
-    TD_TRIPLE_SINGLE_TAP  // Send three single tap
-} td_state_t;
+    TRANSPORT_NONE,
+    TRANSPORT_USB,
+    TRANSPORT_BLUETOOTH,
+} transport_t;
 
+#ifdef NKRO_ENABLE
 typedef struct {
-    bool       is_press_action;
-    td_state_t state;
-} td_tap_t;
+    bool usb : 1;
+    bool bluetooth : 1;
+} nkro_t;
+#endif
 
+<<<<<<<< HEAD:keyboards/keychron/q1/ansi/keymaps/teimor/tap_dance_setup.h
 td_state_t current_dance(tap_dance_state_t *state);
+========
+void        set_transport(transport_t new_transport);
+transport_t get_transport(void);
+
+void bt_transport_enable(bool enable);
+void usb_power_connect(void);
+void usb_power_disconnect(void);
+void usb_transport_enable(bool enable);
+void usb_remote_wakeup(void);
+>>>>>>>> bluetooth_playground:keyboards/keychron/bluetooth/transport.h

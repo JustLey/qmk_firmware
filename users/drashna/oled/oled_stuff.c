@@ -28,8 +28,20 @@
 #    include "process_clicky.h"
 #endif
 
+<<<<<<< HEAD
 #ifndef OLED_BRIGHTNESS_STEP
 #    define OLED_BRIGHTNESS_STEP 32
+=======
+bool is_oled_enabled = true, is_oled_locked = false;
+
+extern bool host_driver_disabled;
+
+uint32_t        oled_timer                        = 0;
+char            keylog_str[OLED_KEYLOGGER_LENGTH] = {0};
+static uint16_t log_timer                         = 0;
+#ifdef OLED_DISPLAY_VERBOSE
+const char PROGMEM display_border[3] = {0x0, 0xFF, 0x0};
+>>>>>>> bluetooth_playground
 #endif
 
 bool is_oled_enabled = true, is_oled_locked = false, is_oled_force_off = false;
@@ -85,6 +97,7 @@ void add_keylog(uint16_t keycode, keyrecord_t *record) {
     }
 
     if ((keycode == KC_BSPC) && mod_config(get_mods() | get_oneshot_mods()) & MOD_MASK_CTRL) {
+<<<<<<< HEAD
         memset(oled_keylog_str, ' ', OLED_KEYLOGGER_LENGTH);
         oled_keylog_str[OLED_KEYLOGGER_LENGTH] = 0x00;
         return;
@@ -92,6 +105,22 @@ void add_keylog(uint16_t keycode, keyrecord_t *record) {
 
     if (keycode > ARRAY_SIZE(code_to_name)) {
         return;
+=======
+        memset(keylog_str, ' ', OLED_KEYLOGGER_LENGTH);
+        keylog_str[OLED_KEYLOGGER_LENGTH-1] = 0x00;
+        return;
+    }
+    if (record->tap.count) {
+        keycode &= 0xFF;
+    } else if (keycode > 0xFF) {
+        return;
+    }
+
+    memmove(keylog_str, keylog_str + 1, OLED_KEYLOGGER_LENGTH - 2);
+
+    if (keycode < ARRAY_SIZE(code_to_name)) {
+        keylog_str[(OLED_KEYLOGGER_LENGTH - 2)] = pgm_read_byte(&code_to_name[keycode]);
+>>>>>>> bluetooth_playground
     }
 
     memmove(oled_keylog_str, oled_keylog_str + 1, OLED_KEYLOGGER_LENGTH - 1);
@@ -599,6 +628,12 @@ void render_pointing_dpi_status(uint16_t cpi, uint8_t padding, uint8_t col, uint
 
 // #define ANIM_FRAME_DURATION 500 // how long each frame lasts in ms
 //  #define SLEEP_TIMER 60000 // should sleep after this period of 0 wpm, needs fixing
+<<<<<<< HEAD
+=======
+#define OLED_ANIM_SIZE 36
+#define OLED_ANIM_ROWS 4
+#define OLED_ANIM_MAX_FRAMES 3
+>>>>>>> bluetooth_playground
 #if (OLED_SLEEP_FRAMES > OLED_ANIM_MAX_FRAMES) || (OLED_WAKE_FRAMES > OLED_ANIM_MAX_FRAMES) || (OLED_KAKI_FRAMES > OLED_ANIM_MAX_FRAMES) || (OLED_RTOGI_FRAMES > OLED_ANIM_MAX_FRAMES)
 #    error frame size too large
 #endif
@@ -778,6 +813,10 @@ bool oled_task_user(void) {
 
 #if defined(OLED_DISPLAY_VERBOSE)
     oled_write_raw_P(header_image, sizeof(header_image));
+<<<<<<< HEAD
+=======
+
+>>>>>>> bluetooth_playground
     oled_set_cursor(4, 0);
     render_oled_title(is_keyboard_left());
 #endif
@@ -819,6 +858,7 @@ bool oled_task_user(void) {
     return false;
 }
 
+<<<<<<< HEAD
 void housekeeping_task_oled(void) {
     is_oled_enabled = false;
     if ((is_oled_locked || (last_input_activity_elapsed() < 60000)) && !is_oled_force_off) {
@@ -827,4 +867,10 @@ void housekeeping_task_oled(void) {
     if (oled_get_brightness() != userspace_config.oled_brightness) {
         oled_set_brightness(userspace_config.oled_brightness);
     }
+=======
+extern bool oled_initialized;
+
+__attribute__((weak)) void housekeeping_task_oled(void) {
+    is_oled_enabled = is_oled_locked ? true : !(timer_elapsed32(oled_timer) > 60000);
+>>>>>>> bluetooth_playground
 }

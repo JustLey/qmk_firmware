@@ -12,7 +12,6 @@ PIN_COMPATIBLE ?= promicro
 #   - env cannot be overwritten but cannot have whitespace anyway
 CONVERT_TO:=$(strip $(CONVERT_TO))
 ifneq ($(CONVERT_TO),)
-
     # stash so we can overwrite env provided vars if needed
     ACTIVE_CONVERTER=$(CONVERT_TO)
 

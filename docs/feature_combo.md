@@ -30,7 +30,11 @@ It is possible to overlap combos. Before, with the example below both combos wou
 ```c
 const uint16_t PROGMEM test_combo1[] = {LSFT_T(KC_A), LT(1, KC_B), COMBO_END};
 const uint16_t PROGMEM test_combo2[] = {LSFT_T(KC_A), LT(1, KC_B), KC_C, COMBO_END};
+<<<<<<< HEAD
 combo_t key_combos[] = {
+=======
+combo_t key_combos[COMBO_COUNT] = {
+>>>>>>> bluetooth_playground
     COMBO(test_combo1, KC_ESC)
     COMBO(test_combo2, KC_TAB)
 };
@@ -38,15 +42,25 @@ combo_t key_combos[] = {
 
 ## Examples
 
+<<<<<<< HEAD
 A long list of combos can be defined in an `enum` list:
+=======
+A long list of combos can be defined in an `enum` list that ends with `COMBO_LENGTH` and you can leave `COMBO_COUNT` undefined:
+>>>>>>> bluetooth_playground
 
 ```c
 enum combos {
   AB_ESC,
   JK_TAB,
   QW_SFT,
+<<<<<<< HEAD
   SD_LAYER
+=======
+  SD_LAYER,
+  COMBO_LENGTH
+>>>>>>> bluetooth_playground
 };
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM ab_combo[] = {KC_A, KC_B, COMBO_END};
 const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
@@ -252,6 +266,21 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 }
 ```
 
+<<<<<<< HEAD
+=======
+### Variable Length Combos
+If you leave `COMBO_COUNT` undefined in `config.h`, it allows you to programmatically declare the size of the Combo data structure and avoid updating `COMBO_COUNT`. Instead a variable called `COMBO_LEN` has to be set. It can be set with something similar to the following in `keymap.c`: `uint16_t COMBO_LEN = ARRAY_SIZE(key_combos);` or by adding `COMBO_LENGTH` as the *last* entry in the combo enum and then `uint16_t COMBO_LEN = COMBO_LENGTH;` as such:
+```c
+enum myCombos {
+    ...,
+    COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH;
+```
+Regardless of the method used to declare `COMBO_LEN`, this also requires to convert the `combo_t key_combos[COMBO_COUNT] = {...};` line to `combo_t key_combos[] = {...};`.
+
+
+>>>>>>> bluetooth_playground
 ### Combo timer
 
 Normally, the timer is started on the first key press and then reset on every subsequent key press within the `COMBO_TERM`.

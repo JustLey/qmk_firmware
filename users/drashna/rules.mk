@@ -123,6 +123,7 @@ ifeq ($(strip $(CUSTOM_BOOTMAGIC_ENABLE)), yes)
     endif
 endif
 
+<<<<<<< HEAD
 CUSTOM_DYNAMIC_MACROS_ENABLE ?= no
 ifeq ($(strip $(CUSTOM_DYNAMIC_MACROS_ENABLE)), yes)
     SRC += $(USER_PATH)/keyrecords/dynamic_macros.c
@@ -133,4 +134,9 @@ ifeq ($(strip $(HARDWARE_DEBUG_ENABLE)), yes)
     LTO_ENABLE := no
     OPT := 0
     OPT_DEFS += -g
+=======
+OS_DETECTION_ENABLE ?= yes
+ifeq ($(strip $(OS_DETECTION_ENABLE)), yes)
+    DEFERRED_EXEC_ENABLE = yes
+>>>>>>> bluetooth_playground
 endif

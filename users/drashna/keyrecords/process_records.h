@@ -5,6 +5,7 @@
 #include "drashna.h"
 
 enum userspace_custom_keycodes {
+<<<<<<< HEAD
     VRSN = QK_USER,  // Prints QMK Firmware and board info
     KC_DIABLO_CLEAR, // Clears all Diablo Timers
     KC_RGB_T,        // Toggles RGB Layer Indication mode
@@ -20,6 +21,29 @@ enum userspace_custom_keycodes {
     UC_TABL,         // ┬─┬ノ( º _ ºノ)
     UC_SHRG,         // ¯\_(ツ)_/¯
     UC_DISA,         // ಠ_ಠ
+=======
+    VRSN = QK_USER,                          // Prints QMK Firmware and board info
+    KC_QWERTY,                               // Sets default layer to QWERTY
+    FIRST_DEFAULT_LAYER_KEYCODE = KC_QWERTY, // Sets default layer to QWERTY
+    KC_COLEMAK_DH,                           // Sets default layer to COLEMAK
+    KC_COLEMAK,                              // Sets default layer to COLEMAK
+    KC_DVORAK,                               // Sets default layer to DVORAK
+    LAST_DEFAULT_LAYER_KEYCODE = KC_DVORAK,  // Sets default layer to WORKMAN
+    KC_DIABLO_CLEAR,                         // Clears all Diablo Timers
+    KC_RGB_T,                                // Toggles RGB Layer Indication mode
+    RGB_IDL,                                 // RGB Idling animations
+    KC_SECRET_1,                             // test1
+    KC_SECRET_2,                             // test2
+    KC_SECRET_3,                             // test3
+    KC_SECRET_4,                             // test4
+    KC_SECRET_5,                             // test5
+    KC_CCCV,                                 // Hold to copy, tap to paste
+    KC_NUKE,                                 // NUCLEAR LAUNCH DETECTED!!!
+    UC_FLIP,                                 // (ಠ痊ಠ)┻━┻
+    UC_TABL,                                 // ┬─┬ノ( º _ ºノ)
+    UC_SHRG,                                 // ¯\_(ツ)_/¯
+    UC_DISA,                                 // ಠ_ಠ
+>>>>>>> bluetooth_playground
     UC_IRNY,
     UC_CLUE,
     KEYLOCK, // Locks keyboard by unmounting driver
@@ -34,12 +58,16 @@ enum userspace_custom_keycodes {
     KC_COMIC,
     KC_ACCEL,
     OLED_LOCK,
+<<<<<<< HEAD
     OLED_BRIGHTNESS_INC,
     OLED_BRIGHTNESS_DEC,
+=======
+>>>>>>> bluetooth_playground
 
     STORE_SETUPS,
     PRINT_SETUPS,
 
+<<<<<<< HEAD
     PD_JIGGLER,
 
     DYN_MACRO_PROG,
@@ -61,6 +89,9 @@ enum userspace_custom_keycodes {
     DYN_MACRO_KEY15,
 
     USER_SAFE_RANGE,
+=======
+    USER_SAFE_RANGE, // use "NEWPLACEHOLDER for keymap specific codes
+>>>>>>> bluetooth_playground
 };
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);

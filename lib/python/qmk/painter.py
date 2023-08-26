@@ -177,10 +177,16 @@ def convert_requested_format(im, format):
 
     # Work out where we're getting the bytes from
     if image_format == 'IMAGE_FORMAT_GRAYSCALE':
+        # Ensure we have a valid number of colors for the palette
+        if ncolors <= 0 or ncolors > 256 or (ncolors & (ncolors - 1) != 0):
+            raise ValueError("Number of colors must be 2, 4, 16, or 256.")
         # If mono, convert input to grayscale, then to RGB, then grab the raw bytes corresponding to the intensity of the red channel
         im = ImageOps.grayscale(im)
         im = im.convert("RGB")
     elif image_format == 'IMAGE_FORMAT_PALETTE':
+        # Ensure we have a valid number of colors for the palette
+        if ncolors <= 0 or ncolors > 256 or (ncolors & (ncolors - 1) != 0):
+            raise ValueError("Number of colors must be 2, 4, 16, or 256.")
         # If color, convert input to RGB, palettize based on the supplied number of colors, then get the raw palette bytes
         im = im.convert("RGB")
         im = im.convert("P", palette=Image.ADAPTIVE, colors=ncolors)

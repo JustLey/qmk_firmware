@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:keyboards/splitkb/aurora/lily58/config.h
 /* Copyright 2022 splitkb.com <support@splitkb.com>
+========
+/* Copyright 2022 @ lokher (https://www.keychron.com)
+>>>>>>>> bluetooth_playground:keyboards/keychron/bluetooth/bat_level_animation.h
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +20,15 @@
 
 #pragma once
 
+<<<<<<<< HEAD:keyboards/splitkb/aurora/lily58/config.h
 // Not yet available in `info.json`
 #ifdef OLED_ENABLE
 #   define OLED_FONT_H "keyboards/splitkb/aurora/lily58/glcdfont.c"
 #endif
+========
+void bat_level_animiation_start(uint8_t percentage);
+void bat_level_animiation_stop(void);
+bool bat_level_animiation_actived(void);
+void bat_level_animiation_indicate(void);
+void bat_level_animiation_task(void);
+>>>>>>>> bluetooth_playground:keyboards/keychron/bluetooth/bat_level_animation.h

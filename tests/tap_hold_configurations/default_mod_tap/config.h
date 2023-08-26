@@ -17,3 +17,8 @@
 #pragma once
 
 #include "test_common.h"
+<<<<<<< HEAD
+=======
+
+#define IGNORE_MOD_TAP_INTERRUPT
+>>>>>>> bluetooth_playground

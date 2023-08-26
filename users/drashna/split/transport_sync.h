@@ -6,6 +6,10 @@
 #include "drashna.h"
 #ifdef OLED_ENABLE
 #    include "oled/oled_stuff.h"
+<<<<<<< HEAD
+=======
+extern char keylog_str[];
+>>>>>>> bluetooth_playground
 #endif
 
 typedef union {

@@ -9,9 +9,12 @@
 #define SPLIT_MODS_ENABLE
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_WPM_ENABLE
+<<<<<<< HEAD
 #define SPLIT_ACTIVITY_ENABLE
 #define SPLIT_DETECTED_OS_ENABLE
 #define SPLIT_HAPTIC_ENABLE
+=======
+>>>>>>> bluetooth_playground
 #ifdef SPLIT_OLED_ENABLE
 #    undef SPLIT_OLED_ENABLE
 #endif

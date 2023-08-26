@@ -103,7 +103,6 @@ void swap_hands_toggle(void);
  * @return false
  */
 bool is_swap_hands_on(void);
-
 void process_hand_swap(keyevent_t *record);
 #endif
 

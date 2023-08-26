@@ -19,14 +19,23 @@ Currently the following converters are available:
 | `promicro` | `bonsai_c4`       |
 | `promicro` | `rp2040_ce`       |
 | `promicro` | `elite_pi`        |
+<<<<<<< HEAD
 | `promicro` | `helios`          |
 | `promicro` | `liatris`         |
+=======
+| `promicro` | `rp2040_ce`       |
+| `promicro` | `elite_pi`        |
+| `promicro` | `helios`          |
+>>>>>>> bluetooth_playground
 | `promicro` | `michi`           |
 | `elite_c`  | `stemcell`        |
 | `elite_c`  | `rp2040_ce`       |
 | `elite_c`  | `elite_pi`        |
 | `elite_c`  | `helios`          |
+<<<<<<< HEAD
 | `elite_c`  | `liatris`         |
+=======
+>>>>>>> bluetooth_playground
 
 See below for more in depth information on each converter.
 
@@ -89,7 +98,10 @@ If a board currently supported in QMK uses a [Pro Micro](https://www.sparkfun.co
 | [customMK Bonsai C4](https://shop.custommk.com/products/bonsai-c4-microcontroller-board) | `bonsai_c4`       |
 | [Elite-Pi](https://keeb.io/products/elite-pi-usb-c-pro-micro-replacement-rp2040)         | `elite_pi`        |
 | [0xCB Helios](https://keeb.supply/products/0xcb-helios)                                  | `helios`          |
+<<<<<<< HEAD
 | [Liatris](https://splitkb.com/products/liatris)                                          | `liatris`         |
+=======
+>>>>>>> bluetooth_playground
 | [Michi](https://github.com/ci-bus/michi-promicro-rp2040)                                 | `michi`           |
 
 Converter summary:
@@ -106,7 +118,10 @@ Converter summary:
 | `rp2040_ce`       | `-e CONVERT_TO=rp2040_ce`       | `CONVERT_TO=rp2040_ce`       | `#ifdef CONVERT_TO_RP2040_CE`       |
 | `elite_pi`        | `-e CONVERT_TO=elite_pi`        | `CONVERT_TO=elite_pi`        | `#ifdef CONVERT_TO_ELITE_PI`        |
 | `helios`          | `-e CONVERT_TO=helios`          | `CONVERT_TO=helios`          | `#ifdef CONVERT_TO_HELIOS`          |
+<<<<<<< HEAD
 | `liatris`         | `-e CONVERT_TO=liatris`         | `CONVERT_TO=liatris`         | `#ifdef CONVERT_TO_LIATRIS`         |
+=======
+>>>>>>> bluetooth_playground
 | `michi`           | `-e CONVERT_TO=michi`           | `CONVERT_TO=michi`           | `#ifdef CONVERT_TO_MICHI`           |
 
 ### Proton C :id=proton_c
@@ -171,7 +186,11 @@ The Bonsai C4 only has one on-board LED (B2), and by default, both the Pro Micro
 #define B0 PAL_LINE(GPIOA, 9)
 ```
 
+<<<<<<< HEAD
 ### RP2040 Community Edition - Elite-Pi, Helios, and Liatris :id=rp2040_ce
+=======
+### RP2040 Community Edition - Elite-Pi and Helios :id=rp2040_ce
+>>>>>>> bluetooth_playground
 
 Feature set currently identical to [Adafruit KB2040](#kb2040).
 
@@ -188,7 +207,10 @@ If a board currently supported in QMK uses an [Elite-C](https://keeb.io/products
 | [STeMCell](https://github.com/megamind4089/STeMCell)                             | `stemcell`        |
 | [Elite-Pi](https://keeb.io/products/elite-pi-usb-c-pro-micro-replacement-rp2040) | `elite_pi`        |
 | [0xCB Helios](https://keeb.supply/products/0xcb-helios)                          | `helios`          |
+<<<<<<< HEAD
 | [Liatris](https://splitkb.com/products/liatris)                                  | `liatris`         |
+=======
+>>>>>>> bluetooth_playground
 
 Converter summary:
 
@@ -198,7 +220,10 @@ Converter summary:
 | `rp2040_ce`       | `-e CONVERT_TO=rp2040_ce`       | `CONVERT_TO=rp2040_ce`       | `#ifdef CONVERT_TO_RP2040_CE`       |
 | `elite_pi`        | `-e CONVERT_TO=elite_pi`        | `CONVERT_TO=elite_pi`        | `#ifdef CONVERT_TO_ELITE_PI`        |
 | `helios`          | `-e CONVERT_TO=helios`          | `CONVERT_TO=helios`          | `#ifdef CONVERT_TO_HELIOS`          |
+<<<<<<< HEAD
 | `liatris`         | `-e CONVERT_TO=liatris`         | `CONVERT_TO=liatris`         | `#ifdef CONVERT_TO_LIATRIS`         |
+=======
+>>>>>>> bluetooth_playground
 
 ### STeMCell :id=stemcell_elite
 

@@ -1,4 +1,4 @@
-/* Copyright 2021 Stefan Kerkmann
+/* Copyright 2017 Fred Sundvik
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,13 @@
 
 #include "test_common.h"
 
+<<<<<<<< HEAD:tests/tap_hold_configurations/quick_tap/config.h
 #define QUICK_TAP_TERM 100
 // Although a seemingly superfluous addition since the default per-key function behaves
 // no differently from defining a single global QUICK_TAP_TERM, this has been useful
 // to catch compilation errors and prevent regressions in the future; see PR #19893.
 #define QUICK_TAP_TERM_PER_KEY
+========
+#define NO_ACTION_TAPPING
+#define NO_ACTION_TAPPING_MODTAP_MODS
+>>>>>>>> bluetooth_playground:tests/no_tapping/no_mod_tap_mods/config.h

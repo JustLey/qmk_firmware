@@ -106,6 +106,8 @@ Using encoder mapping pumps events through the normal QMK keycode processing pip
 
 If you would like the alter the default behaviour, and are not using `ENCODER_MAP_ENABLE = yes`, the callback functions can be inserted into your `<keyboard>.c`:
 
+?> Those who are adding new keyboard support where encoders are enabled at the keyboard level should include basic encoder functionality at the keyboard level (`<keyboard>.c`) using the `encoder_update_kb()` function, that way it works for QMK Configuator users and exists in general.
+
 ```c
 bool encoder_update_kb(uint8_t index, bool clockwise) {
     if (!encoder_update_user(index, clockwise)) {
@@ -113,9 +115,15 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     if (index == 0) { /* First encoder */
         if (clockwise) {
+<<<<<<< HEAD
             tap_code(KC_PGDN);
         } else {
             tap_code(KC_PGUP);
+=======
+            tap_code_delay(KC_VOLU, 10);
+        } else {
+            tap_code_delay(KC_VOLD, 10);
+>>>>>>> bluetooth_playground
         }
     } else if (index == 1) { /* Second encoder */
         if (clockwise) {
@@ -149,7 +157,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 ```
 
+<<<<<<< HEAD
 !> If you return `true` in the keymap level `_user` function, it will allow the keyboard/core level encoder code to run on top of your own. Returning `false` will override the keyboard level function, if setup correctly. This is generally the safest option to avoid confusion.
+=======
+!> If you return `true` in the keymap level `_user` function, it will allow the keyboard level encoder code to run on top of your own. Returning `false` will override the keyboard level function, if setup correctly. This is generally the safest option to avoid confusion.
+>>>>>>> bluetooth_playground
 
 ## Hardware
 

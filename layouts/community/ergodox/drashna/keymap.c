@@ -18,6 +18,11 @@
 
 enum more_custom_keycodes {
     KC_SWAP_NUM = USER_SAFE_RANGE,
+<<<<<<< HEAD
+=======
+    PM_SCROLL,
+    PM_PRECISION,
+>>>>>>> bluetooth_playground
 };
 
 // define layer change stuff for underglow indicator

@@ -40,6 +40,10 @@
 #    define WPM_ESTIMATED_WORD_SIZE 5
 #endif
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bluetooth_playground
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE, UNICODE_MODE_MACOS
 
 #ifndef ONESHOT_TAP_TOGGLE

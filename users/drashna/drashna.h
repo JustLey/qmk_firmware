@@ -30,9 +30,12 @@
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
+<<<<<<< HEAD
 #ifdef UNICODE_COMMON_ENABLE
 #    include "keyrecords/unicode.h"
 #endif
+=======
+>>>>>>> bluetooth_playground
 
 /* Define layer names */
 enum userspace_layers {
