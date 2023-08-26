@@ -16,49 +16,9 @@
 
 #pragma once
 
-<<<<<<<< HEAD:keyboards/splitkb/kyria/keymaps/drashna/chconf.h
 #if defined(KEYBOARD_splitkb_kyria_rev3)
 #define CH_CFG_ST_RESOLUTION 16
 #define CH_CFG_ST_FREQUENCY  10000
 #endif
 
 #include_next <chconf.h>
-========
-#include "quantum.h"
-#ifdef VIA_ENABLE
-#    include "via.h"
-#endif
-
-#define ___ KC_NO
-
-#ifdef VIA_ENABLE
-#    define USER_START QK_KB_0
-#else
-#    define USER_START SAFE_RANGE
-#endif
-
-// clang-format off
-enum {
-    KC_LOPTN = USER_START,
-    KC_ROPTN,
-    KC_LCMMD,
-    KC_RCMMD,
-    KC_TASK,
-    KC_FILE,
-    KC_SNAP,
-    KC_CTANA,
-    KC_SIRI,
-#ifdef KC_BLUETOOTH_ENABLE
-    BT_HST1,
-    BT_HST2,
-    BT_HST3,
-    BAT_LVL,
-#else
-    BT_HST1 = KC_TRNS,
-    BT_HST2 = KC_TRNS,
-    BT_HST3 = KC_TRNS,
-    BAT_LVL = KC_TRNS,
-#endif
-    NEW_SAFE_RANGE
-};
->>>>>>>> bluetooth_playground:keyboards/keychron/k11_pro/k11_pro.h

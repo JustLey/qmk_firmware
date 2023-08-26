@@ -16,10 +16,5 @@
 
 #pragma once
 
-<<<<<<<< HEAD:keyboards/keychron/q60/ansi/config.h
 /* RGB Matrix Configuration */
 #define RGB_MATRIX_LED_COUNT 60
-========
-#undef PRODUCT
-#define PRODUCT "CANDYSIGN KB1 Pro"
->>>>>>>> bluetooth_playground:keyboards/keychron/k2_pro/ansi/white/keymaps/candysign/config.h

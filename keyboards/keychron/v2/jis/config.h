@@ -16,7 +16,6 @@
 
 #pragma once
 
-<<<<<<<< HEAD:keyboards/keychron/v2/jis/config.h
 /* RGB Matrix Configuration */
 #define DRIVER_1_LED_TOTAL 35
 #define DRIVER_2_LED_TOTAL 36
@@ -27,42 +26,3 @@
 
 /* Enable caps-lock LED */
 #define CAPS_LOCK_LED_INDEX 30
-========
-#include "quantum.h"
-#ifdef VIA_ENABLE
-#    include "via.h"
-#endif
-
-#define ___ KC_NO
-
-#ifdef VIA_ENABLE
-#    define USER_START QK_KB_0
-#else
-#    define USER_START SAFE_RANGE
-#endif
-
-// clang-format off
-enum {
-    KC_LOPTN = USER_START,
-    KC_ROPTN,
-    KC_LCMMD,
-    KC_RCMMD,
-    KC_TASK,
-    KC_FILE,
-    KC_SNAP,
-    KC_CTANA,
-    KC_SIRI,
-#ifdef KC_BLUETOOTH_ENABLE
-    BT_HST1,
-    BT_HST2,
-    BT_HST3,
-    BAT_LVL,
-#else
-    BT_HST1 = KC_TRNS,
-    BT_HST2 = KC_TRNS,
-    BT_HST3 = KC_TRNS,
-    BAT_LVL = KC_TRNS,
-#endif
-	NEW_SAFE_RANGE
-};
->>>>>>>> bluetooth_playground:keyboards/keychron/k8_pro/k8_pro.h

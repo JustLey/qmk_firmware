@@ -1,4 +1,4 @@
-/* Copyright 2023 @ Keychron (https://www.keychron.com)
+/* Copyright 2022 @ Teimor Epstein
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,38 +16,33 @@
 
 #pragma once
 
-#include "quantum.h"
-#ifdef VIA_ENABLE
-#    include "via.h"
-#endif
-
-#ifdef VIA_ENABLE
-#    define USER_START QK_KB_0
-#else
-#    define USER_START SAFE_RANGE
-#endif
-
 // clang-format off
-enum {
-    KC_LOPTN = USER_START,
-    KC_ROPTN,
-    KC_LCMMD,
-    KC_RCMMD,
-    KC_TASK,
-    KC_FILE,
-    KC_SNAP,
-    KC_CTANA,
-    KC_SIRI,
-#ifdef KC_BLUETOOTH_ENABLE
-    BT_HST1,
-    BT_HST2,
-    BT_HST3,
-    BAT_LVL,
-#else
-    BT_HST1 = KC_TRNS,
-    BT_HST2 = KC_TRNS,
-    BT_HST3 = KC_TRNS,
-    BAT_LVL = KC_TRNS,
-#endif
-	NEW_SAFE_RANGE
+
+enum layers {
+    MAC_BASE,
+    MAC_FN,
+    WIN_BASE,
+    WIN_FN
 };
+
+// clang-format on
+
+// Tap dance enums
+enum {
+    MAC_CAPS_LANGUAGE_CHANGE,
+    WIN_CAPS_LANGUAGE_CHANGE,
+};
+
+#ifdef TAP_DANCE_ENABLE
+#   define KC_LGMAC TD(MAC_CAPS_LANGUAGE_CHANGE)
+#   define KC_LGWIN TD(WIN_CAPS_LANGUAGE_CHANGE)
+#else
+#   define KC_LGMAC KC_CAPS
+#   define KC_LGWIN KC_CAPS
+#endif
+#define KC_MACFN MO(MAC_FN)
+#define KC_WINFN MO(WIN_FN)
+#define KC_LMAC C(G(KC_Q))
+#define KC_MACPS G(S(KC_5))
+#define KC_TASK G(KC_TAB)
+#define KC_FLXP G(KC_E)

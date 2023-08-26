@@ -16,7 +16,6 @@
 
 #pragma once
 
-<<<<<<< HEAD:keyboards/preonic/keymaps/snowskeleton/config.h
 #ifdef AUDIO_ENABLE
 #define STARTUP_SONG SONG(PREONIC_SOUND)
 // #define STARTUP_SONG SONG(NO_SOUND) // uncomment to silence startup sounds
@@ -29,6 +28,3 @@
 #define ENCODERS_PAD_A { B12 }
 #define ENCODERS_PAD_B { B13 }
 #define ENCODER_RESOLUTION 4
-=======
-#pragma message("'config_common.h' should no longer be included!")
->>>>>>> bluetooth_playground:quantum/config_common.h
