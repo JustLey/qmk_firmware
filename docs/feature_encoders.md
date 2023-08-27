@@ -115,15 +115,9 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     if (index == 0) { /* First encoder */
         if (clockwise) {
-<<<<<<< HEAD
             tap_code(KC_PGDN);
         } else {
             tap_code(KC_PGUP);
-=======
-            tap_code_delay(KC_VOLU, 10);
-        } else {
-            tap_code_delay(KC_VOLD, 10);
->>>>>>> bluetooth_playground
         }
     } else if (index == 1) { /* Second encoder */
         if (clockwise) {
@@ -157,11 +151,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 ```
 
-<<<<<<< HEAD
 !> If you return `true` in the keymap level `_user` function, it will allow the keyboard/core level encoder code to run on top of your own. Returning `false` will override the keyboard level function, if setup correctly. This is generally the safest option to avoid confusion.
-=======
-!> If you return `true` in the keymap level `_user` function, it will allow the keyboard level encoder code to run on top of your own. Returning `false` will override the keyboard level function, if setup correctly. This is generally the safest option to avoid confusion.
->>>>>>> bluetooth_playground
 
 ## Hardware
 

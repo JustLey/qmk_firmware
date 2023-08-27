@@ -13,11 +13,7 @@ jobs:
   regen:
     runs-on: ubuntu-latest
 
-<<<<<<< HEAD
     container: ghcr.io/qmk/qmk_cli
-=======
-    container: qmkfm/qmk_cli
->>>>>>> bluetooth_playground
 
     steps:
     - name: Disable safe.directory check
@@ -38,11 +34,7 @@ jobs:
         git config user.email 'hello@qmk.fm'
 
     - name: Create Pull Request
-<<<<<<< HEAD
       uses: peter-evans/create-pull-request@v5
-=======
-      uses: peter-evans/create-pull-request@v4
->>>>>>> bluetooth_playground
       if: ${{ github.repository == 'qmk/qmk_firmware'}}
       with:
         token: ${{ secrets.QMK_BOT_TOKEN }}

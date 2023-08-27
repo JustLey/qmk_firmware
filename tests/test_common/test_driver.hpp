@@ -99,7 +99,6 @@ class TestDriver {
  */
 #define EXPECT_NO_REPORT(driver) EXPECT_ANY_REPORT(driver).Times(0)
 
-<<<<<<< HEAD
 /** @brief Tests whether keycode `actual` is equal to `expected`. */
 #define EXPECT_KEYCODE_EQ(actual, expected) EXPECT_THAT((actual), KeycodeEq((expected)))
 
@@ -111,8 +110,6 @@ MATCHER_P(KeycodeEq, expected_keycode, "is equal to " + testing::PrintToString(e
     return false;
 }
 
-=======
->>>>>>> bluetooth_playground
 /**
  * @brief Verify and clear all gmock expectations that have been setup until
  * this point.

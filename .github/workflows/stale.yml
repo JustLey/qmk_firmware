@@ -13,11 +13,7 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
       - uses: actions/stale@v8
-=======
-      - uses: actions/stale@v7
->>>>>>> bluetooth_playground
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 

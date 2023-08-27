@@ -22,19 +22,11 @@ POINTING_DEVICE_DRIVER = adns5050
 
 The ADNS 5050 sensor uses a serial type protocol for communication, and requires an additional light source.
 
-<<<<<<< HEAD
 | Setting (`config.h`) | Description                                                        | Default                    |
 | -------------------- | ------------------------------------------------------------------ | -------------------------- |
 | `ADNS5050_SCLK_PIN`  | (Required) The pin connected to the clock pin of the sensor.       | `POINTING_DEVICE_SCLK_PIN` |
 | `ADNS5050_SDIO_PIN`  | (Required) The pin connected to the data pin of the sensor.        | `POINTING_DEVICE_SDIO_PIN` |
 | `ADNS5050_CS_PIN`    | (Required) The pin connected to the Chip Select pin of the sensor. | `POINTING_DEVICE_CS_PIN`   |
-=======
-| Setting             | Description                                                        | Default                    |
-| ------------------- | ------------------------------------------------------------------ | -------------------------- |
-| `ADNS5050_SCLK_PIN` | (Required) The pin connected to the clock pin of the sensor.       | `POINTING_DEVICE_SCLK_PIN` |
-| `ADNS5050_SDIO_PIN` | (Required) The pin connected to the data pin of the sensor.        | `POINTING_DEVICE_SDIO_PIN` |
-| `ADNS5050_CS_PIN`   | (Required) The pin connected to the Chip Select pin of the sensor. | `POINTING_DEVICE_CS_PIN`   |
->>>>>>> bluetooth_playground
 
 
 

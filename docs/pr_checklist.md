@@ -42,11 +42,7 @@ If there are any inconsistencies with these recommendations, you're best off [cr
 
 - `#include QMK_KEYBOARD_H` preferred to including specific board files
 - prefer layer `enum`s to `#define`s
-<<<<<<< HEAD
 - custom keycode `enum`s must have first entry `= SAFE_RANGE`
-=======
-- require custom keycode `enum`s to `#define`s, first entry must have ` = SAFE_RANGE`
->>>>>>> bluetooth_playground
 - terminating backslash (`\`) in lines of LAYOUT macro parameters is superfluous and should be removed
 - some care with spacing (e.g., alignment on commas or first char of keycodes) makes for a much nicer-looking keymap
 
@@ -57,10 +53,7 @@ https://github.com/qmk/qmk_firmware/pulls?q=is%3Apr+is%3Aclosed+label%3Akeyboard
 
 - keyboard moves within the repository *must* go through the `develop` branch instead of `master`, so as to ensure compatibility for users
     - `data/mappings/keyboard_aliases.hjson` must be updated to reflect the move, so users with pre-created configurator keymap.json files continue to detect the correct keyboard
-<<<<<<< HEAD
 - keyboard updates and refactors (eg. to data driven) *must* go through `develop` to reduce `master` -> `develop` merge conflicts
-=======
->>>>>>> bluetooth_playground
 - PR submissions from a `kbfirmware` export (or equivalent) will not be accepted unless converted to new QMK standards -- try `qmk import-kbfirmware` first
 - `info.json`
     - With the move to [data driven](https://docs.qmk.fm/#/data_driven_config) keyboard configuration, we encourage contributors to utilise as many features as possible of the info.json [schema](https://github.com/qmk/qmk_firmware/blob/master/data/schemas/keyboard.jsonschema).

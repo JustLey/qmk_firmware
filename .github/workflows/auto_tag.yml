@@ -32,11 +32,7 @@ jobs:
         fetch-depth: 0
 
     - name: Bump version and push tag
-<<<<<<< HEAD
       uses: anothrNick/github-tag-action@1.66.0
-=======
-      uses: anothrNick/github-tag-action@1.61.0
->>>>>>> bluetooth_playground
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DEFAULT_BUMP: 'patch'

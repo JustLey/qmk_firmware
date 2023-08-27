@@ -47,7 +47,6 @@ const uint8_t PROGMEM encoder_hand_swap_config[NUM_ENCODERS] = { 1, 0 };
 
 ### Functions :id=functions
 
-<<<<<<< HEAD
 User callback functions to manipulate Swap-Hands:
 
 | Function              | Description                                 |
@@ -56,8 +55,3 @@ User callback functions to manipulate Swap-Hands:
 | `swap_hands_off()`    | Turns Swap-Hands off.                       |
 | `swap_hands_toggle()` | Toggles Swap-Hands.                         |
 | `is_swap_hands_on()`  | Returns true if Swap-Hands is currently on. |
-=======
-| Function             | Description                                 |
-|----------------------|---------------------------------------------|
-| `is_swap_hands_on()` | Returns true if Swap-Hands is currently on. |
->>>>>>> bluetooth_playground

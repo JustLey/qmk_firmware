@@ -13,11 +13,7 @@ jobs:
   regen:
     runs-on: ubuntu-latest
 
-<<<<<<< HEAD
     container: ghcr.io/qmk/qmk_cli
-=======
-    container: qmkfm/qmk_cli
->>>>>>> bluetooth_playground
 
     steps:
     - name: Disable safe.directory check
