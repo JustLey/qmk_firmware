@@ -1,7 +1,7 @@
 
 OPT_DEFS += -DKC_BLUETOOTH_ENABLE
 
-BLUETOOTH_DIR = bluetooth
+BLUETOOTH_DIR = keyboards/keychron/bluetooth
 SRC += \
      $(BLUETOOTH_DIR)/bluetooth.c \
      $(BLUETOOTH_DIR)/report_buffer.c \
@@ -16,7 +16,7 @@ SRC += \
      $(BLUETOOTH_DIR)/bat_level_animation.c \
      $(BLUETOOTH_DIR)/rtc_timer.c
 
-VPATH += $(TOP_DIR)/keyboards/keychron/$(BLUETOOTH_DIR)
+VPATH += $(TOP_DIR)/$(BLUETOOTH_DIR)
 
 # Work around RTC clock issue without touching chibios, refer to the link for this bug
 # https://forum.chibios.org/viewtopic.php?f=35&t=6197
