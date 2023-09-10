@@ -1,4 +1,4 @@
-/* Copyright 2022 @ Keychron (https://www.keychron.com)
+/* Copyright 2023 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "k11_pro.h"
+#include "k14_pro.h"
 #ifdef KC_BLUETOOTH_ENABLE
 #    include "ckbt51.h"
 #    include "bluetooth.h"
@@ -60,11 +60,13 @@ static void pairing_key_timer_cb(void *arg) {
 #endif
 
 bool dip_switch_update_kb(uint8_t index, bool active) {
+    if (index == 0) {
 #ifdef INVERT_OS_SWITCH_STATE
-    default_layer_set(1UL << (!active ? 0 : 1));
+        default_layer_set(1UL << (!active ? 1 : 0));
 #else
-    default_layer_set(1UL << (active ? 0 : 1));
+        default_layer_set(1UL << (active ? 1 : 0));
 #endif
+    }
     dip_switch_update_user(index, active);
 
     return true;
@@ -135,12 +137,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-#if defined(ENCODER_ENABLE)
-static void encoder_pad_cb(void *param) {
-    encoder_inerrupt_read((uint32_t)param & 0xFF);
-}
-#endif
-
 void keyboard_post_init_kb(void) {
     dip_switch_read(true);
 
@@ -156,17 +152,6 @@ void keyboard_post_init_kb(void) {
 
     ckbt51_init(false);
     bluetooth_init();
-#endif
-
-#ifdef ENCODER_ENABLE
-    pin_t encoders_pad_a[NUM_ENCODERS] = ENCODERS_PAD_A;
-    pin_t encoders_pad_b[NUM_ENCODERS] = ENCODERS_PAD_B;
-    for (uint32_t i = 0; i < NUM_ENCODERS; i++) {
-        palEnableLineEvent(encoders_pad_a[i], PAL_EVENT_MODE_BOTH_EDGES);
-        palEnableLineEvent(encoders_pad_b[i], PAL_EVENT_MODE_BOTH_EDGES);
-        palSetLineCallback(encoders_pad_a[i], encoder_pad_cb, (void *)i);
-        palSetLineCallback(encoders_pad_b[i], encoder_pad_cb, (void *)i);
-    }
 #endif
 
     power_on_indicator_timer_buffer = sync_timer_read32() | 1;
@@ -323,3 +308,9 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     }
 }
 #endif
+
+void suspend_wakeup_init_kb(void) {
+    // code will run on keyboard wakeup
+    clear_keyboard();
+    send_keyboard_report();
+}

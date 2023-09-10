@@ -1,6 +1,6 @@
 {
     "manufacturer": "Keychron",
-    "keyboard_name": "Keychron Q8 Pro",
+    "keyboard_name": "Keychron Q14 Pro",
     "url": "https://github.com/Keychron",
     "maintainer": "lalalademaxiya1",
     "processor": "STM32L432",
@@ -46,9 +46,12 @@
             "solid_splash": true
         }
     },
+    "bootmagic": {
+        "matrix": [0, 4]
+    },
     "matrix_pins": {
-        "cols": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-        "rows": ["B4", "B3", "A15", "A14", "A13"],
+        "cols": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ],
+        "rows": ["B5", "B4", "B3", "A15", "A14", "A13"],
         "custom": true,
         "custom_lite": true
     },
@@ -57,8 +60,5 @@
         "rotary": [
             {"pin_a": "A0", "pin_b": "A10"}
         ]
-    },
-    "dynamic_keymap": {
-        "layer_count": 5
     }
 }

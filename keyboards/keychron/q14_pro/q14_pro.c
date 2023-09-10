@@ -1,4 +1,4 @@
-/* Copyright 2022 @ Keychron (https://www.keychron.com)
+/* Copyright 2023 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "k11_pro.h"
+#include "q14_pro.h"
 #ifdef KC_BLUETOOTH_ENABLE
 #    include "ckbt51.h"
 #    include "bluetooth.h"
@@ -29,17 +29,14 @@
 #    include "factory_test.h"
 #endif
 
-#define POWER_ON_LED_DURATION 3000
-
 typedef struct PACKED {
     uint8_t len;
     uint8_t keycode[3];
 } key_combination_t;
 
-static uint32_t factory_timer_buffer            = 0;
-static uint32_t power_on_indicator_timer_buffer = 0;
-static uint32_t siri_timer_buffer               = 0;
-static uint8_t  mac_keycode[4]                  = {KC_LOPT, KC_ROPT, KC_LCMD, KC_RCMD};
+static uint32_t factory_timer_buffer = 0;
+static uint32_t siri_timer_buffer    = 0;
+static uint8_t  mac_keycode[4]       = {KC_LOPT, KC_ROPT, KC_LCMD, KC_RCMD};
 
 key_combination_t key_comb_list[4] = {
     {2, {KC_LWIN, KC_TAB}},        // Task (win)
@@ -60,11 +57,13 @@ static void pairing_key_timer_cb(void *arg) {
 #endif
 
 bool dip_switch_update_kb(uint8_t index, bool active) {
+    if (index == 0) {
 #ifdef INVERT_OS_SWITCH_STATE
-    default_layer_set(1UL << (!active ? 0 : 1));
+        default_layer_set(1UL << (!active ? 2 : 0));
 #else
-    default_layer_set(1UL << (active ? 0 : 1));
+        default_layer_set(1UL << (active ? 2 : 0));
 #endif
+    }
     dip_switch_update_user(index, active);
 
     return true;
@@ -104,7 +103,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed && siri_timer_buffer == 0) {
                 register_code(KC_LGUI);
                 register_code(KC_SPACE);
-                siri_timer_buffer = sync_timer_read32() | 1;
+                siri_timer_buffer = sync_timer_read32() == 0 ? 1 : sync_timer_read32();
             }
             return false; // Skip all further processing of this key
 #ifdef KC_BLUETOOTH_ENABLE
@@ -135,7 +134,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-#if defined(ENCODER_ENABLE)
+#if defined(KC_BLUETOOTH_ENABLE) && defined(ENCODER_ENABLE)
 static void encoder_pad_cb(void *param) {
     encoder_inerrupt_read((uint32_t)param & 0xFF);
 }
@@ -156,9 +155,8 @@ void keyboard_post_init_kb(void) {
 
     ckbt51_init(false);
     bluetooth_init();
-#endif
 
-#ifdef ENCODER_ENABLE
+#    ifdef ENCODER_ENABLE
     pin_t encoders_pad_a[NUM_ENCODERS] = ENCODERS_PAD_A;
     pin_t encoders_pad_b[NUM_ENCODERS] = ENCODERS_PAD_B;
     for (uint32_t i = 0; i < NUM_ENCODERS; i++) {
@@ -167,10 +165,9 @@ void keyboard_post_init_kb(void) {
         palSetLineCallback(encoders_pad_a[i], encoder_pad_cb, (void *)i);
         palSetLineCallback(encoders_pad_b[i], encoder_pad_cb, (void *)i);
     }
+#    endif
 #endif
 
-    power_on_indicator_timer_buffer = sync_timer_read32() | 1;
-    writePin(BAT_LOW_LED_PIN, BAT_LOW_LED_PIN_ON_STATE);
     keyboard_post_init_user();
 }
 
@@ -182,15 +179,6 @@ void matrix_scan_kb(void) {
             palWriteLine(CKBT51_RESET_PIN, PAL_LOW);
             wait_ms(5);
             palWriteLine(CKBT51_RESET_PIN, PAL_HIGH);
-        }
-    }
-
-    if (power_on_indicator_timer_buffer) {
-        if (sync_timer_elapsed32(power_on_indicator_timer_buffer) > POWER_ON_LED_DURATION) {
-            power_on_indicator_timer_buffer = 0;
-            writePin(BAT_LOW_LED_PIN, !BAT_LOW_LED_PIN_ON_STATE);
-        } else {
-            writePin(BAT_LOW_LED_PIN, BAT_LOW_LED_PIN_ON_STATE);
         }
     }
 
@@ -323,3 +311,9 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     }
 }
 #endif
+
+void suspend_wakeup_init_kb(void) {
+    // code will run on keyboard wakeup
+    clear_keyboard();
+    send_keyboard_report();
+}

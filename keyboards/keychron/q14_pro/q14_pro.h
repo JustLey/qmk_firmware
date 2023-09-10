@@ -1,4 +1,4 @@
-/* Copyright 2023 QMK
+/* Copyright 2023 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,17 +16,40 @@
 
 #pragma once
 
-#define _CHIBIOS_HAL_CONF_VER_8_0_
-
-#define HAL_USE_I2C TRUE
-
-#if defined(ENCODER_ENBALE) || defined(KC_BLUETOOTH_ENABLE)
-#    define PAL_USE_CALLBACKS TRUE
+#include "quantum.h"
+#ifdef VIA_ENABLE
+#    include "via.h"
 #endif
 
+#define ___ KC_NO
+
+#ifdef VIA_ENABLE
+#    define USER_START QK_KB_0
+#else
+#    define USER_START SAFE_RANGE
+#endif
+
+// clang-format off
+enum {
+    KC_LOPTN = USER_START,
+    KC_ROPTN,
+    KC_LCMMD,
+    KC_RCMMD,
+    KC_TASK,
+    KC_FILE,
+    KC_SNAP,
+    KC_CTANA,
+    KC_SIRI,
 #ifdef KC_BLUETOOTH_ENABLE
-#    define HAL_USE_SERIAL TRUE
-#    define HAL_USE_RTC TRUE
+    BT_HST1,
+    BT_HST2,
+    BT_HST3,
+    BAT_LVL,
+#else
+    BT_HST1 = KC_TRNS,
+    BT_HST2 = KC_TRNS,
+    BT_HST3 = KC_TRNS,
+    BAT_LVL = KC_TRNS,
 #endif
-
-#include_next <halconf.h>
+	NEW_SAFE_RANGE
+};

@@ -1,22 +1,22 @@
-# Keychron Q8 Pro
+# Keychron K14 Pro
 
-![Keychron Q8 Pro](https://i.imgur.com/dZBGbrs.jpg)
+![Keychron K14 Pro](https://i.imgur.com/oDkNCbI.jpg)
 
-A customizable 65% Alice keyboard.
+A customizable 70% keyboard.
 
 * Keyboard Maintainer: [Keychron](https://github.com/keychron)
-* Hardware Supported: Keychron Q8 Pro
-* Hardware Availability:[Keychron Q8 Pro (Alice Layout) QMK/VIA Wireless Custom Mechanical Keyboard](https://www.keychron.com/products/keychron-q8-pro-alice-layout-qmk-via-wireless-custom-mechanical-keyboard)
+* Hardware Supported: Keychron K14 Pro
+* Hardware Availability:[Keychron K14 Pro QMK/VIA Wireless Mechanical Keyboard](https://www.keychron.com/products/keychron-k14-pro-qmk-via-wireless-mechanical-keyboard)
 
 Make example for this keyboard (after setting up your build environment):
 
-    make keychron/q8_pro/ansi_encoder:default
-    make keychron/q8_pro/iso_encoder:default
+    make keychron/k14_pro/ansi/rgb:default
+    make keychron/k14_pro/ansi/white:default
 
 Flashing example for this keyboard:
 
-    make keychron/q8_pro/ansi_encoder:default:flash
-    make keychron/q8_pro/iso_encoder:default:flash
+    make keychron/k14_pro/ansi/rgb:default:flash
+    make keychron/k14_pro/ansi/white:default:flash
 
 **Reset Key**: Connect the USB cable, toggle mode switch to "Off", hold down the *Esc* key or reset button underneath space bar, then toggle the switch to "Cable".
 
